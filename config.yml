@@ -16,9 +16,9 @@ storage:
 #  database: proxy_auth
 
 discord:
-  token: "..." # Your bot token
+  token: "...." # Your bot token
   # Get it from https://discord.com/developers/applications
-  guild_id: "..." # Your guild id
+  guild_id: "....." # Your guild id
 
 # [Permissions & Commands]
 # /proxyuth add <nick> - proxyauth.admin - Add user to 2fa list
@@ -39,11 +39,12 @@ messages:
   auto_login: "You were automatically logged in."
   command_not_found: "Command not found."
   config_reloaded: "Config reloaded."
+  player_not_found: "Player not found."
 
 # [Usages]
 usages:
-  add: "/proxyauth add <uuid> <discord_user_id>"
-  remove: "/proxyauth remove <uuid>"
+  add: "/proxyauth add <nick> <discord_user_id>"
+  remove: "/proxyauth remove <nick>"
   reload: "/proxyauth reload"
 
 # [Kick messages]

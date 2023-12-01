@@ -1,0 +1,138 @@
+# █▀█ █▀█ █▀█ ▀▄▀ █▄█   ▄▀█ █░█ ▀█▀ █░█
+# █▀▀ █▀▄ █▄█ █░█ ░█░   █▀█ █▄█ ░█░ █▀█
+#  By: Rodrigo R.
+
+storage:
+# Supported storages are: MySQL, SQLite and PostgreSQL
+  driver: mysql # Change to postgres for PostgreSQL
+  host: localhost
+  port: 3306
+  username: root
+  password: root
+  database: proxy_auth
+
+# Or for SQLite
+#  driver: sqlite
+#  database: proxy_auth
+
+discord:
+  token: "..." # Your bot token
+  # Get it from https://discord.com/developers/applications
+  guild_id: "..." # Your guild id
+
+# [Permissions & Commands]
+# /proxyuth add <nick> - proxyauth.admin - Add user to 2fa list
+# /proxyuth remove <nick> - proxyauth.admin - Remove user from 2fa list
+# /proxyauth reload - proxyauth.admin - Reload config
+
+# [Messages]
+messages:
+  prefix: "&d&l[ProxyAuth] &8➤ &7"
+  # Prefix is automatically added to all messages
+  no_perm: "You don't have permission to execute this command."
+  no_user: "User not found."
+  user_added: "User added to 2fa list."
+  user_removed: "User removed from 2fa list."
+  user_already_added: "User already has 2fa enabled."
+  not_2fa: "User doesn't have 2fa enabled."
+  not_logged_in: "You need to approve this login. Please check your DM."
+  auto_login: "You were automatically logged in."
+  command_not_found: "Command not found."
+  config_reloaded: "Config reloaded."
+
+# [Usages]
+usages:
+  add: "/proxyauth add <uuid> <discord_user_id>"
+  remove: "/proxyauth remove <uuid>"
+  reload: "/proxyauth reload"
+
+# [Kick messages]
+kick:
+  not_2fa: # Message displayed to users that tries to enter your server and they're not registered in 2fa list
+    - "&a&lMyServer"
+    - " "
+    - "&bYou are not registered in 2fa list."
+    - "&bPlease open a ticket so we can help you."
+    - " "
+    - "&6Discord: &ediscord.myserver.com"
+
+# [The message embed]
+embed:
+  title: "2FA"
+  description: "You have requested to login on my server. If it is really you, please approve this login below."
+  color: "ORANGE" # Any color available on: java.awt.Color
+  # Colors on java.awt.Color:
+  #   BLACK
+  #   BLUE
+  #   CYAN
+  #   DARK_GRAY
+  #   GRAY
+  #   GREEN
+  #   LIGHT_GRAY
+  #   MAGENTA
+  #   ORANGE
+  #   PINK
+  #   RED
+  #   WHITE
+  #   YELLOW
+  author:
+    name: "2FA"
+    icon: null # If empty, this will be omitted
+    url: null # If empty, this will be omitted 
+  thumbnail: null # If empty, this will be omitted
+  image: null # If empty, this will be omitted
+  footer:
+    icon: null # If empty, this will be omitted
+    text: "Powered by ProxyAuth"
+  buttons:
+    approve: "Approve"
+    decline: "Decline"
+  approved:
+    title: "2FA"
+    description: "You have approved this login."
+    color: "GREEN"
+    author:
+      name: "2FA"
+      icon: null # If empty, this will be omitted
+      url: null # If empty, this will be omitted 
+    thumbnail: null # If empty, this will be omitted
+    image: null # If empty, this will be omitted
+    footer:
+      icon: null # If empty, this will be omitted
+      text: "Powered by ProxyAuth"
+  denied:
+    title: "2FA"
+    description: "You have declined this login."
+    color: "RED"
+    author:
+      name: "2FA"
+      icon: null # If empty, this will be omitted
+      url: null # If empty, this will be omitted 
+    thumbnail: null # If empty, this will be omitted
+    image: null # If empty, this will be omitted
+    footer:
+      icon: null # If empty, this will be omitted
+      text: "Powered by ProxyAuth"
+  expired:
+    title: "2FA"
+    description: "Your login request has expired."
+    color: "RED"
+    author:
+      name: "2FA"
+      icon: null # If empty, this will be omitted
+      url: null # If empty, this will be omitted 
+    thumbnail: null # If empty, this will be omitted
+    image: null # If empty, this will be omitted
+    footer:
+      icon: null # If empty, this will be omitted
+      text: "Powered by ProxyAuth"
+
+# [Commands to execute on login reject]
+reject:
+  - "ban %PLAYER% Login rejected."
+
+# If the user's IP is the same as the last time they logged in, they are going to be automatically authorized if this option is enabled
+allow_same_ip: true
+
+# Seconds before the login request expires
+time_before_expire: 40
